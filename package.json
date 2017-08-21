@@ -1,0 +1,16 @@
+{
+  "name": "eslint-doc-generator",
+  "version": "1.0.0",
+  "description": "Generate eslint documentation based on the .eslintrc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Vinod S R",
+  "license": "MIT",
+  "dependencies": {
+    "eslint-rule-documentation": "^1.0.16",
+    "request": "^2.81.0"
+  }
+}
