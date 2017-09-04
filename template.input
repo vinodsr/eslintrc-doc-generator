@@ -1,0 +1,6 @@
+Coding Standards
+===============
+{{#rules}}
+{{rule}}
+{{ruledefinition}}
+{{/rules}}
