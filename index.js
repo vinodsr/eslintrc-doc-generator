@@ -3,6 +3,9 @@ const request = require("request");
 const Handlebars = require('handlebars')
 const getRuleURI = require('eslint-rule-documentation');
 const async = require('async')
+const options = require('./lib/commandline')
+
+console.log(options)
 
 var response = "";
 
