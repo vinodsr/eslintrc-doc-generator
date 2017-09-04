@@ -7,10 +7,14 @@ const options = require('./lib/commandline')
 
 console.log(options)
 
+if(typeof options.lint === 'undefined') {
+	console.log('lint file is missing')
+}
+
 var response = "";
 
 fs = require('fs')
-var eslint = fs.readFileSync('./eslintrc.json', 'utf8');
+var eslint = fs.readFileSync(options.lint, 'utf8');
 var templatesource = fs.readFileSync('./template.input', 'utf8');
 eslint = JSON.parse(eslint)
 //var eslint = require("./eslintrc.json");
@@ -22,7 +26,7 @@ var template = Handlebars.compile(templatesource);
 var templatedata = {
 	rules : []
 }
-console.log('Generating...')
+console.log(`Generating documentation for ${options.lint} ...`)
 async.forEachOf(eslint.rules,function (key,value,callback) {
 	status = getRuleURI(value);
 	if(status.found == true) {
@@ -53,7 +57,7 @@ async.forEachOf(eslint.rules,function (key,value,callback) {
 		process.exit(-1)
 	}
 },function (err) {
-console.log('Completed',err)
+console.log(`completed ${err}`)
 var result = template(templatedata);
 fs.writeFileSync('out.md',result)
 })
